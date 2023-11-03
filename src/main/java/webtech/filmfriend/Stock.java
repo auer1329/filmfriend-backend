@@ -23,8 +23,7 @@ public class Stock {
 
     public Stock() {}
 
-    public Stock(String id, String brand, String name, int iso, boolean formatThirtyFive, boolean formatOneTwenty) {
-        this.apiID = id;
+    public Stock(String brand, String name, int iso, boolean formatThirtyFive, boolean formatOneTwenty) {
         this.brand = brand;
         this.name = name;
         this.iso = iso;
