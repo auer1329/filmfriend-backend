@@ -8,7 +8,6 @@ public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String apiID;
     private String brand;
     private String name;
     private int iso;
@@ -31,8 +30,8 @@ public class Stock {
         this.formatOneTwenty = formatOneTwenty;
     }
 
-    public Stock(String id, String brand, String name, int iso, boolean formatThirtyFive, boolean formatOneTwenty, boolean color, String process, String staticImageUrl, String description, List<Feature> keyFeatures) {
-        this.apiID = id;
+    public Stock(String apiID, String brand, String name, int iso, boolean formatThirtyFive, boolean formatOneTwenty, boolean color, String process, String staticImageUrl, String description, List<Feature> keyFeatures) {
+        this.id = (long) apiID.hashCode();
         this.brand = brand;
         this.name = name;
         this.iso = iso;
@@ -45,10 +44,9 @@ public class Stock {
         this.keyFeatures = keyFeatures;
     }
 
-    public String getApiID() {
-        return apiID;
+    public Long getId() {
+        return id;
     }
-
     public String getBrand() {
         return brand;
     }
@@ -87,10 +85,6 @@ public class Stock {
 
     public List<Feature> getKeyFeatures() {
         return keyFeatures;
-    }
-
-    public void setApiID(String apiID) {
-        this.apiID = apiID;
     }
 
     public void setBrand(String brand) {
