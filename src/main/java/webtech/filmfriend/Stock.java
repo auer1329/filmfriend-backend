@@ -30,8 +30,8 @@ public class Stock {
         this.formatOneTwenty = formatOneTwenty;
     }
 
-    public Stock(String apiID, String brand, String name, int iso, boolean formatThirtyFive, boolean formatOneTwenty, boolean color, String process, String staticImageUrl, String description, List<Feature> keyFeatures) {
-        this.id = (long) apiID.hashCode();
+    public Stock(Long id, String brand, String name, int iso, boolean formatThirtyFive, boolean formatOneTwenty, boolean color, String process, String staticImageUrl, String description, List<Feature> keyFeatures) {
+        this.id = id;
         this.brand = brand;
         this.name = name;
         this.iso = iso;
