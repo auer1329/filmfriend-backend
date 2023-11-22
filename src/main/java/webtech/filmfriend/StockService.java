@@ -47,7 +47,7 @@ public class StockService {
                     stockNode.get("process").asText(),
                     stockNode.get("staticImageUrl").asText(),
                     stockNode.get("description").asText(),
-                    null //stockNode.get("keyFeatures").asText()
+                    null //stockNode.get("keyFeatures").asText() // TODO parse keyFeatures
             ));
         }
         repo.saveAll(stocks);
