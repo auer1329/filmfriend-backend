@@ -3,7 +3,8 @@ package webtech.filmfriend;
 import jakarta.persistence.*;
 
 @Entity
-public class Camera {
+
+public class Cameramodel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,5 +14,5 @@ public class Camera {
     private String staticImageUrl;
     private boolean formatThirtyFive;
     private boolean formatOneTwenty;
-    public Camera() {}
+    public Cameramodel() {}
 }
