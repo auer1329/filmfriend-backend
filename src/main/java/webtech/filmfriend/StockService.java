@@ -37,7 +37,7 @@ public class StockService {
 
         for (JsonNode stockNode : stocksNode) {
             stocks.add(new Stock(
-                    ((long) (stockNode.get("_id").asText().hashCode())), // TODO make sure id is negative
+                    Math.abs((long) (stockNode.get("_id").asText().hashCode())) *-1,
                     stockNode.get("brand").asText(),
                     stockNode.get("name").asText(),
                     stockNode.get("iso").asInt(),
