@@ -9,17 +9,17 @@ public class CameramodelController {
     @Autowired
     CameramodelService cameramodelService;
 
-    @PostMapping("/cameramodel")
+    @PostMapping("/api/cameramodel")
     public Cameramodel saveCameramodel(@RequestBody Cameramodel cameramodel) {
         return cameramodelService.save(cameramodel);
     }
 
-    @GetMapping("/cameramodel")
+    @GetMapping("/api/cameramodel")
     public Iterable<Cameramodel> getAllCameramodels() {
         return cameramodelService.getAll();
     }
 
-    @GetMapping("/cameramodel/{id}")
+    @GetMapping("/api/cameramodel/{id}")
     public Cameramodel getCameramodel(@PathVariable String id) {
         Long cameramodelId = Long.parseLong(id);
         return cameramodelService.get(cameramodelId);

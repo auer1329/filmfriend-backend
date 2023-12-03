@@ -27,7 +27,7 @@ public class StockService {
         return repo.findById(id).orElseThrow(() -> new RuntimeException("Stock not found"));
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+    //@EventListener(ApplicationReadyEvent.class)
     public void updateFilmindex() throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         String jsonString = restTemplate.getForObject(url, String.class);
@@ -37,7 +37,7 @@ public class StockService {
 
         for (JsonNode stockNode : stocksNode) {
             stocks.add(new Stock(
-                    Math.abs((long) (stockNode.get("_id").asText().hashCode())) *-1,
+                    (long) (stockNode.get("_id").asText().hashCode()),
                     stockNode.get("brand").asText(),
                     stockNode.get("name").asText(),
                     stockNode.get("iso").asInt(),
@@ -51,5 +51,9 @@ public class StockService {
             ));
         }
         repo.saveAll(stocks);
+    }
+
+    public Iterable<Stock> getAll() {
+        return repo.findAll();
     }
 }

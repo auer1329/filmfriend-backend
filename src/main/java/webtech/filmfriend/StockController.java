@@ -8,13 +8,17 @@ public class StockController {
 
     @Autowired
     StockService service;
-    @PostMapping("/stocks")
+    @PostMapping("/api/stocks")
     public Stock createStock(@RequestBody Stock stock) {
         return service.save(stock);
     }
-    @GetMapping("/stocks/{id}")
+    @GetMapping("/api/stocks/{id}")
     public Stock getStock(@PathVariable String id) {
         Long stockId = Long.parseLong(id);
         return service.get(stockId);
+    }
+    @GetMapping("/api/stocks")
+    public Iterable<Stock> getAllStocks() {
+        return service.getAll();
     }
 }
