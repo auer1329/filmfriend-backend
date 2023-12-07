@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.*;
 public class CameramodelController {
 
     @Autowired
-    CameramodelService cameramodelService;
+    CameramodelService service;
     @CrossOrigin
     @PostMapping("/api/cameramodel")
-    public Cameramodel saveCameramodel(@RequestBody Cameramodel cameramodel) {
-        return cameramodelService.save(cameramodel);
+    public Cameramodel createCameramodel(@RequestBody Cameramodel cameramodel) {
+        return service.save(cameramodel);
     }
-    @CrossOrigin
 
-    @GetMapping("/api/cameramodel")
-    public Iterable<Cameramodel> getAllCameramodels() {
-        return cameramodelService.getAll();
-    }
     @CrossOrigin
-
     @GetMapping("/api/cameramodel/{id}")
     public Cameramodel getCameramodel(@PathVariable String id) {
         Long cameramodelId = Long.parseLong(id);
-        return cameramodelService.get(cameramodelId);
+        return service.get(cameramodelId);
+    }
+
+    @CrossOrigin
+    @GetMapping("/api/cameramodel")
+    public Iterable<Cameramodel> getAllCameramodels() {
+        return service.getAll();
     }
 }
