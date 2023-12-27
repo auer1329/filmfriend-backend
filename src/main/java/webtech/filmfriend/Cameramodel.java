@@ -14,6 +14,8 @@ public class Cameramodel {
     private String staticImageUrl;
     private boolean formatThirtyFive;
     private boolean formatOneTwenty;
+    @OneToOne
+    private Roll roll;
     public Cameramodel() {}
 
     public Long getId() {
@@ -70,5 +72,17 @@ public class Cameramodel {
 
     public void setFormatOneTwenty(boolean formatOneTwenty) {
         this.formatOneTwenty = formatOneTwenty;
+    }
+
+    public Roll getRoll() {
+        return roll;
+    }
+
+    public void setRoll(Roll roll) {
+        if(this.getRoll() == null){
+            this.roll = roll;
+        } else {
+            throw new RuntimeException("Camera already has a roll assigned");
+        }
     }
 }
