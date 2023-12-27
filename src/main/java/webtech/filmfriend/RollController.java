@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
 public class RollController {
 
     @Autowired
@@ -16,4 +16,12 @@ public class RollController {
     public Roll createRoll(@RequestParam Long stockId, @RequestParam Long cameraId) {
         return service.assignRollToCamera(cameraId, stockId);
     }
+
+    @CrossOrigin
+    @DeleteMapping("/api/roll/{id}")
+    public Cameramodel deleteRoll(@PathVariable String id) {
+        Long cameraId = Long.parseLong(id);
+        return service.deleteRollFromCamera(cameraId);
+    }
+
 }
