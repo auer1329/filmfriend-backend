@@ -31,6 +31,7 @@ public class RollService {
         Roll roll = new Roll();
         Stock stock = stockRepo.findById(stockId).orElseThrow(() -> new RuntimeException("Stock not found"));
         roll.setStock(stock);
+        rollRepo.save(roll);
         return roll;
     }
 }
