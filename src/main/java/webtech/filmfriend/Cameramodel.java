@@ -79,10 +79,6 @@ public class Cameramodel {
     }
 
     public void setRoll(Roll roll) {
-        if(this.getRoll() == null){
-            this.roll = roll;
-        } else {
-            throw new RuntimeException("Camera already has a roll assigned");
-        }
+        this.roll=roll;
     }
 }
