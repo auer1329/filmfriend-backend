@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 
 @RestController
 public class RollController {
@@ -19,9 +21,8 @@ public class RollController {
 
     @CrossOrigin
     @DeleteMapping("/api/roll/{id}")
-    public Cameramodel deleteRoll(@PathVariable String id) {
-        Long cameraId = Long.parseLong(id);
-        return service.deleteRollFromCamera(cameraId);
+    public Cameramodel deleteRoll(@PathVariable Long id) {
+        return service.deleteRollFromCamera(id);
     }
 
 }

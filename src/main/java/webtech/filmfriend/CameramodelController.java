@@ -16,9 +16,8 @@ public class CameramodelController {
 
     @CrossOrigin
     @GetMapping("/api/cameramodel/{id}")
-    public Cameramodel getCameramodel(@PathVariable String id) {
-        Long cameramodelId = Long.parseLong(id);
-        return service.get(cameramodelId);
+    public Cameramodel getCameramodel(@PathVariable Long id) {
+        return service.get(id);
     }
 
     @CrossOrigin
