@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.time.LocalDate;
 
 @Service
 public class RollService {
@@ -32,6 +32,22 @@ public class RollService {
         Stock stock = stockRepo.findById(stockId).orElseThrow(() -> new RuntimeException("Stock not found"));
         roll.setStock(stock);
         rollRepo.save(roll);
+        return roll;
+    }
+
+    public Roll developRoll(Long cameraId, LocalDate expectedPickupDate, int usedIso, String labName, String notes) {
+        Cameramodel camera = cameraRepository.findById(cameraId).orElseThrow(() -> new RuntimeException("Camera not found"));
+        Roll roll = camera.getRoll();
+        if (roll == null) {
+            throw new RuntimeException("Camera has no roll");
+        }
+        roll.setExpectedPickupDate(expectedPickupDate);
+        roll.setUsedIso(usedIso);
+        roll.setLabName(labName);
+        roll.setNotes(notes);
+        rollRepo.save(roll);
+        camera.setRoll(null);
+        cameraRepository.save(camera);
         return roll;
     }
 

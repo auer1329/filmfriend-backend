@@ -13,6 +13,8 @@ public class Roll {
     private Stock stock;
     private LocalDate expectedPickupDate;
     private int usedIso;
+    private String labName;
+    private String notes;
 
     public Roll() {}
 
@@ -51,5 +53,21 @@ public class Roll {
 
     public void setUsedIso(int usedIso) {
         this.usedIso = usedIso;
+    }
+
+    public String getLabName() {
+        return labName;
+    }
+
+    public void setLabName(String labName) {
+        this.labName = labName;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

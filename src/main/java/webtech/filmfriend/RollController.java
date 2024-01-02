@@ -1,7 +1,6 @@
 package webtech.filmfriend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -25,4 +24,9 @@ public class RollController {
         return service.deleteRollFromCamera(id);
     }
 
+    @CrossOrigin
+    @PutMapping("/api/roll")
+    public Roll developRoll(@RequestParam Long cameraId, @RequestParam LocalDate expectedPickupDate, @RequestParam int usedIso,  @RequestParam String labName, @RequestParam String notes) {
+        return service.developRoll(cameraId, expectedPickupDate, usedIso, labName, notes);
+    }
 }
