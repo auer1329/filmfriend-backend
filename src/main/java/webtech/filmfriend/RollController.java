@@ -35,4 +35,10 @@ public class RollController {
     public Roll developRoll(@RequestParam Long cameraId, @RequestParam LocalDate expectedPickupDate, @RequestParam int usedIso,  @RequestParam String labName, @RequestParam String notes) {
         return service.developRoll(cameraId, expectedPickupDate, usedIso, labName, notes);
     }
+    @CrossOrigin
+    @GetMapping("/api/roll/in-development")
+    public Iterable<Roll> getRollsInDevelopment() {
+        return service.getRollsInDevelopment();
+    }
+
 }

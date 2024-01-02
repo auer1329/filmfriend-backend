@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Service
 public class RollService {
@@ -34,6 +35,10 @@ public class RollService {
 
     public Iterable <Roll> getAllRolls() {
         return rollRepo.findAll();
+    }
+
+    public Iterable<Roll> getRollsInDevelopment() {
+        return StreamSupport.stream(getAllRolls().spliterator(), false).filter(roll -> roll.getExpectedPickupDate() != null).toList();
     }
 
     private Roll createNewRoll(Long stockId) {
