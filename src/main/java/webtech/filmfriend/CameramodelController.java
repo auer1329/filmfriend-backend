@@ -25,4 +25,10 @@ public class CameramodelController {
     public Iterable<Cameramodel> getAllCameramodels() {
         return service.getAll();
     }
+
+    @CrossOrigin
+    @DeleteMapping("/api/cameramodel/{id}")
+    public Cameramodel deleteCameramodel(@PathVariable Long id) {
+        return service.delete(id);
+    }
 }

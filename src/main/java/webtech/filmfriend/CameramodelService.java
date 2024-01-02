@@ -19,4 +19,10 @@ public class CameramodelService {
     public Iterable<Cameramodel> getAll() {
         return cameramodelRepo.findAll();
     }
+
+    public Cameramodel delete(Long id) {
+        Cameramodel cameramodel = cameramodelRepo.findById(id).orElseThrow(() -> new RuntimeException("Cameramodel not found"));
+        cameramodelRepo.delete(cameramodel);
+        return cameramodel;
+    }
 }
