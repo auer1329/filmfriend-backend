@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class RollService {
@@ -25,6 +26,14 @@ public class RollService {
             return newRoll;
         }
         throw new RuntimeException("Camera already has a roll");
+    }
+
+    public Roll getRoll(Long rollId) {
+        return rollRepo.findById(rollId).orElseThrow(() -> new RuntimeException("Roll not found"));
+    }
+
+    public Iterable <Roll> getAllRolls() {
+        return rollRepo.findAll();
     }
 
     private Roll createNewRoll(Long stockId) {

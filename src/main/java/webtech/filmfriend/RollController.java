@@ -13,6 +13,12 @@ public class RollController {
     RollService service;
 
     @CrossOrigin
+    @GetMapping("/api/roll/")
+    public Iterable<Roll> getAllRolls() {
+        return service.getAllRolls();
+    }
+
+    @CrossOrigin
     @PostMapping("/api/roll")
     public Roll createRoll(@RequestParam Long stockId, @RequestParam Long cameraId) {
         return service.assignRollToCamera(cameraId, stockId);
