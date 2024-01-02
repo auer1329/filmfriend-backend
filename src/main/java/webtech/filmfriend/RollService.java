@@ -62,7 +62,9 @@ public class RollService {
 
     public Cameramodel deleteRollFromCamera(Long cameraId) {
         Cameramodel camera = cameraRepository.findById(cameraId).orElseThrow(() -> new RuntimeException("Camera not found"));
+        Long id = camera.getRoll().getId();
         camera.setRoll(null);
+        rollRepo.deleteById(id);
         cameraRepository.save(camera);
         return camera;
     }
