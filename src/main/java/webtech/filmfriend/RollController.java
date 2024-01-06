@@ -25,9 +25,11 @@ public class RollController {
     }
 
     @CrossOrigin
-    @DeleteMapping("/api/roll/{id}")
-    public Cameramodel deleteRoll(@PathVariable Long id) {
-        return service.deleteRollFromCamera(id);
+    @DeleteMapping("/api/roll")
+    public Roll deleteRoll(@RequestParam(required = false) Long cameraId, @RequestParam(required = false) Long rollId) {
+        if (cameraId != null) return service.deleteRollFromCamera(cameraId);
+        if (rollId != null) return service.deleteRoll(rollId);
+        throw new RuntimeException("No cameraId or rollId provided");
     }
 
     @CrossOrigin

@@ -65,12 +65,19 @@ public class RollService {
         return roll;
     }
 
-    public Cameramodel deleteRollFromCamera(Long cameraId) {
+    public Roll deleteRollFromCamera(Long cameraId) {
         Cameramodel camera = cameraRepository.findById(cameraId).orElseThrow(() -> new RuntimeException("Camera not found"));
-        Long id = camera.getRoll().getId();
+        Roll roll = camera.getRoll();
+        Long id = roll.getId();
         camera.setRoll(null);
         rollRepo.deleteById(id);
         cameraRepository.save(camera);
-        return camera;
+        return roll;
+    }
+
+    public Roll deleteRoll(Long rollId) {
+        Roll roll = rollRepo.findById(rollId).orElseThrow(() -> new RuntimeException("Roll not found"));
+        rollRepo.delete(roll);
+        return roll;
     }
 }
