@@ -1,5 +1,6 @@
 package webtech.filmfriend;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,7 @@ class CameramodelServiceTest {
     CameramodelRepo cameramodelRepo;
 
     @Test
+    @DisplayName("Should find cameramodel by id")
     void get() {
         var cameramodelNikon = new Cameramodel();
         var cameramodelCanon = new Cameramodel();

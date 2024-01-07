@@ -1,5 +1,6 @@
 package webtech.filmfriend;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,7 @@ class RollServiceTest {
     RollRepo repo;
 
     @Test
+    @DisplayName("Test get all rolls")
     void getAllRolls() {
         var roll1 = new Roll(10L, null);
         roll1.setNotes("roll1");
