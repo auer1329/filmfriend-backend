@@ -1,0 +1,29 @@
+version: '3.8'  
+services:
+  backend:
+    image: filmfriend-backend
+    build: .
+    container_name: filmfriend-backend
+    restart: unless_stopped
+    ports:
+      - 8888:8080
+    environment:
+      - DATASOURCE_URL=jdbc:postgresql://db/filmfriend
+      - DATASOURCE_USER=filmfriend
+      - DATASOURCE_PASSWORD=filmfriend
+    volumes:
+      - ./:/app:ro
+
+  db:
+    image: docker.io/library/postgres:13
+    restart: unless_stopped
+    container_name: filmfriend-db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: filmfriend
+      POSTGRES_USER: filmfriend
+      POSTGRES_PASSWORD: filmfriend
+
+volumes:
+  pgdata:
